@@ -12,9 +12,7 @@ public class User {
 	private int id;
 	private String name, phone, email, address;
 	
-	public User() {
-		super();
-	}
+	
 
 	public User(String name, String phone, String email, String address) {
 		super();

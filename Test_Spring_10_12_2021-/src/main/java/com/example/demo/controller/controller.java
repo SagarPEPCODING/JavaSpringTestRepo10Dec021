@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Services.servicesJPA;
 import com.example.demo.pojo.User;
+import com.example.demo.pojo.product;
 
 
 @RestController
@@ -32,27 +33,27 @@ public class controller {
 	}
 
 	@GetMapping("all")
-	public List<User> getAllUser() {
-		return this.us.getAllUsersService();
+	public List<product> getAllProduct() {
+		return this.us.getAllProductService();
 	}
 
-	@PostMapping("addUser")
-	public User postUser(@RequestBody User useris) {
-		return this.us.createUserService(useris);
+	@PostMapping("addProduct")
+	public product postProduct(@RequestBody product myProductis) {
+		return this.us.createProductService(myProductis);
 	}
 
-	@GetMapping("getUserById/{id}")
-	public Optional<User> getUser(@PathVariable("id") int id) {
-		return this.us.getDetailsService(id);
+	@GetMapping("getProductById/{id}")
+	public Optional<product> getUser(@PathVariable("id") int id) {
+		return this.us.getDetailsProductService(id);
 	}
 
-	@DeleteMapping("deleteUserById/{id}")
-	public int deleteUser(@PathVariable("id") int id) {
-		return this.us.deleteUserService(id);
+	@DeleteMapping("deleteProductById/{id}")
+	public int deleteProduct(@PathVariable("id") int id) {
+		return this.us.deleteProductService(id);
 	}
 	
-	@PutMapping("updateUserById/{id}")
-	public User updateUser(@RequestBody User useris, @PathVariable("id") int id) {
-		return this.us.updateUserService(useris, id);
+	@PutMapping("updateProductById/{id}")
+	public product updateProduct(@RequestBody product myProductis, @PathVariable("id") int id) {
+		return this.us.updateProductService(myProductis, id);
 	}
 }

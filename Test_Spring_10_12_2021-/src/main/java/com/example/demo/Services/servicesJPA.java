@@ -8,25 +8,26 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.userDao;
 import com.example.demo.pojo.User;
+import com.example.demo.pojo.product;
 
 @Service
 public class servicesJPA {
 	@Autowired
 	userDao ud;
 	
-	public User createUserService(User newuser) {
-		return this.ud.save(newuser);
+	public product createProductService(product myProductis) {
+		return this.ud.save(myProductis);
 	}
 	
-	public List<User> getAllUsersService() {
+	public List<product> getAllProductService() {
 		return this.ud.findAll();
 	}
 	
-	public Optional<User> getDetailsService(int id) {
+	public Optional<product> getDetailsProductService(int id) {
 		return this.ud.findById(id);
 	}
 	
-	public int deleteUserService(int id) {
+	public int deleteProductService(int id) {
 		try {
 			this.ud.deleteById(id);
 			return 1;
@@ -35,15 +36,13 @@ public class servicesJPA {
 		}
 	}
 	
-	public User updateUserService(User user, int id) {
-		Optional<User> foundUser = this.ud.findById(id);
-		if (foundUser.isPresent()) {
-			User myUser = foundUser.get();
-			myUser.setName(user.getName());
-			myUser.setEmail(user.getEmail());
-			myUser.setPhone(user.getPhone());
-			myUser.setAddress(user.getAddress());
-			return this.ud.save(myUser);
+	public product updateProductService(product myProductis, int id) {
+		Optional<product> foundproduct = this.ud.findById(id);
+		if (foundproduct.isPresent()) {
+			product myProduct = foundproduct.get();
+			myProduct.setProductName(myProductis.getProductName());
+			myProduct.setBrandName(myProductis.getBrandName());
+			return this.ud.save(myProduct);
 		}
 		else {
 			return null;
